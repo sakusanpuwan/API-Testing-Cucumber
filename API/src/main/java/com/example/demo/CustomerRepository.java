@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.CustomerModel;
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -13,9 +14,11 @@ public interface CustomerRepository extends MongoRepository<CustomerModel, Objec
 
     Optional<CustomerModel> findCustomerById(ObjectId id);
 
-    Optional<CustomerModel> findCustomerByFirstName(String firstName);
+    List<CustomerModel> findAllCustomersByFirstName(String firstName);
 
-    Optional<CustomerModel> findCustomerBySecondName(String secondName);
+    List<CustomerModel> findAllCustomersBySecondName(String secondName);
 
-    Optional<CustomerModel> findCustomerByEmail(String email);
+    List<CustomerModel> findAllCustomersByFirstNameAndSecondName(String firstName,String secondName);
+
+    CustomerModel findCustomerByEmail(String email);
 }

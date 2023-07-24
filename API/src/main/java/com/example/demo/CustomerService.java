@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,24 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Optional<CustomerModel> getCustomerByFirstName(String firstName){
-        return customerRepository.findCustomerByFirstName(firstName);
+    public List<CustomerModel> getAllCustomersByFirstName(String firstName){
+        return customerRepository.findAllCustomersByFirstName(firstName);
+    }
+
+    public List<CustomerModel> getAllCustomersBySecondName(String secondName){
+        return customerRepository.findAllCustomersBySecondName(secondName);
+    }
+
+    public List<CustomerModel> getAllCustomersByFirstNameAndSecondName(String firstName,String secondName){
+        return customerRepository.findAllCustomersByFirstNameAndSecondName(firstName,secondName);
+    }
+
+    public CustomerModel getCustomerByEmail(String email){
+        return customerRepository.findCustomerByEmail(email);
+    }
+
+    public Optional<CustomerModel> getCustomerById(ObjectId id){
+        return customerRepository.findCustomerById(id);
     }
 
     public CustomerModel createCustomer(CustomerModel customer){
